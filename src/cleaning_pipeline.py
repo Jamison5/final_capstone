@@ -16,27 +16,6 @@ from pandas.plotting import scatter_matrix
 import plotly.express as px
 
 
-# df = pd.read_excel('../data/globalterrorismdb_0522dist.xlsx')
-
-
-# df2 = df[['iyear', 'imonth', 'iday', 'country', 'country_txt', 'region', 'region_txt',
-#         'provstate', 'city', 'attacktype1', 'attacktype1_txt', 'targtype1',
-#         'targtype1_txt', 'targsubtype1', 'targsubtype1_txt', 'target1', 'natlty1', 'natlty1_txt',
-#         'gname', 'weaptype1', 'weaptype1_txt']]
-
-# df2['targsubtype1'].fillna(0.0, inplace=True)
-
-# df2['city'].fillna('Unknown', inplace=True)
-
-# df2['targsubtype1_txt'].fillna('Unknown', inplace=True)
-
-# df2['target1'].fillna('Unknown', inplace=True)
-
-# df2['natlty1_txt'].fillna('Unidentified', inplace=True)
-
-# df2['natlty1'].fillna(0.0, inplace=True)
-
-
 def preprocess_data(filename):
     '''
        Creates a DataFrame from input filepath that is composed of seleced columns. 
@@ -63,11 +42,39 @@ def preprocess_data(filename):
     return df
 
 
-filepath = '../data/globalterrorismdb_0522dist.xlsx'
-terrorism_df = preprocess_data(filepath)
+def analyze_terrorism_data(filepath, group_names):
+    '''
+       Uses preprocess_data() to create a dataframe cleaned to required specifications,
+       iterates over a list of stings which match desired groups from gname column. '''
+    terrorism_df = preprocess_data(filepath)
+    
+    for group_name in group_names:
+        group_atk_df = terrorism_df[terrorism_df['gname'] == group_name].reset_index(drop=True)
+        
+        plt.figure()
+        plt.hist(group_atk_df['iyear'], label=group_name)
+        plt.legend()
+        plt.xlabel('Year')
+        plt.ylabel('Frequency')
+        plt.title(f'Histogram of Attack Years for {group_name}')
+    
+    plt.show()
 
-taliban_atk_df = terrorism_df[terrorism_df['gname'] == 'Taliban'].reset_index(drop=True)
-unknown_atk_df = terrorism_df[terrorism_df['gname'] == 'Unknown'].reset_index(drop=True)
+
+def plot_top_categories(data, column_name, num_categories, title):
+    category_counts = data[column_name].value_counts().nlargest(num_categories)
+    
+    plt.bar(category_counts.index, category_counts.values)
+    plt.xlabel(column_name)
+    plt.ylabel('Frequency')
+    plt.title(title)
+    plt.xticks(rotation=45)
+    plt.show()
+    
+
+filepath = '../data/globalterrorismdb_0522dist.xlsx'
+group_names = ['Taliban', 'Unknown']
+analyze_terrorism_data(filepath, group_names)
 
 if __name__ == '__main__':
     print(terrorism_df.head())
