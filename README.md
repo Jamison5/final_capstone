@@ -29,3 +29,9 @@ Lets look at the rest of the groups pictured and get an idea of how each's activ
 ![Boko_activity](images/Boko_Haram_activity.png)
 ![Ansar_activity](images/Ansar_Allah_activity.png)
 ![IRA_activity](images/IRA_activity.png)
+
+If we observe the dates carefully it intresting to notice that many of the now most active terrorist organizations seem to have only come into existance during the middle of the Global War on Terror, which was begun in an effort to end orginzed terrorism, with a particular focus on the regions in the middle east. 
+
+## Conlusion 
+
+In conlcusion, based on
