@@ -80,7 +80,8 @@ def plot_top_categories(data, column_name, num_categories, title):
     plt.xlabel(column_name)
     plt.ylabel('Frequency')
     plt.title(title)
-    plt.xticks(rotation=45)
+    plt.xticks(rotation=90)
+    plt.tight_layout()
     plt.show()
     
 
@@ -97,6 +98,7 @@ if __name__ == '__main__':
 
     # creates a cleaned dataframe
     terrorism_df = preprocess_data(filepath)
+    taliban_df = terrorism_df[terrorism_df['gname']=='Taliban']
 
     # creates a bar graph showing the most active terrorist groups
     # most_active_groups = terrorism_df['gname'].value_counts().nlargest(10)
@@ -113,4 +115,6 @@ if __name__ == '__main__':
     # plt.show()
 
     # Creates histograms of group activity through years.
-    analyze_terrorism_data(filepath, group_names)
+    # analyze_terrorism_data(filepath, group_names)
+
+    plot_top_categories(taliban_df, 'weaptype1_txt', 10, 'Most Used Weapons in Taliban Attakcs')
