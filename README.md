@@ -34,4 +34,4 @@ If we observe the dates carefully it intresting to notice that many of the now m
 
 ## Conlusion 
 
-In conlcusion, based on
+In conlcusion, based on what we can see, the global war on terror has not reduced terrorist activities. 
