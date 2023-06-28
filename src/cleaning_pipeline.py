@@ -92,7 +92,7 @@ if __name__ == '__main__':
     filepath = '../data/globalterrorismdb_0522dist.xlsx'
     
     # Creates a lis of group names to create multiple histogram plots from using analyze_terrorism_data()
-    group_names = ['Taliban', 'Unknown', 'Islamic State of Iraq and the Levant (ISIL)', 'Shining Path (SL)',
+    group_names = ['Taliban', 'Islamic State of Iraq and the Levant (ISIL)', 'Shining Path (SL)',
                    'Al-Shabaab', "New People's Army (NPA)", 'Farabundo Marti National Liberation Front (FMLN)',
                    'Boko Haram', 'Houthi extremists (Ansar Allah)', 'Irish Republican Army (IRA)']
 
@@ -116,6 +116,6 @@ if __name__ == '__main__':
     # plt.show()
 
     # Creates histograms of group activity through years.
-    # analyze_terrorism_data(filepath, group_names)
+    analyze_terrorism_data(filepath, group_names)
 
-    plot_top_categories(unknown_df, 'targtype1_txt', 10, 'Targets of Unknown Group Attacks')
+    plot_top_categories(taliban_df, 'targtype1_txt', 10, 'Targets of Taliban Attacks')
